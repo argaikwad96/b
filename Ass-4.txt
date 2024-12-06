@@ -1,0 +1,203 @@
+Ass 4: Sorting and Searching
+
+1. Write a Scilab program to sort 10 numbers using bubble sort in increasing order.
+
+//Bubble Sort
+
+function bubbleSort(a)
+    n=length(a)
+    
+    for i=1:(n-1)
+        swapped=0
+        for j=1:(n-1)
+            if a(j)>a(j+1)
+                temp=a(j)
+                a(j)=a(j+1)
+                a(j+1)=temp
+                swapped=1
+            end
+       end
+       if swapped == 0 then
+           break
+        end
+    end
+    disp("sorted Array in increasing order")
+    disp(a)
+    endfunction
+    for i=1:10
+        numbers(i)=input("enter a number")
+    end
+    bubbleSort(numbers)
+
+
+output::
+
+--> exec('/home/fymsc12/scilab_assignment/Q1.bubble sort.sce', -1)
+enter a number45
+
+enter a number45
+
+enter a number25
+
+enter a number34
+
+enter a number61
+
+enter a number85
+
+enter a number75
+
+enter a number91
+
+enter a number4
+
+enter a number5
+
+
+  "sorted Array in increasing order"
+
+   4.   5.   25.   34.   45.   45.   61.   75.   85.   91.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Write a Scilab program to sort 5 numbers using insertion sort in increasing order.
+
+//insertion sort
+
+function insertionSort(a)
+    n=length(a)
+    for i=1:n
+        key=a(i)
+        j=i-1
+        
+        while j>0&&a(j)>key
+            a(j+1)=a(j)
+            j=j-1
+    end
+    a(j+1) = key
+end
+disp("sorted element using insertion sort")
+disp(a)
+endfunction
+for i=1:5
+    a(i)=input("enter the num:")
+end
+insertionSort(a)
+
+output:::
+
+
+--> exec('/home/fymsc12/scilab_assignment/Q2.insertion sort.sce', -1)
+enter the num:45
+
+enter the num:56
+
+enter the num:85
+
+enter the num:75
+
+enter the num:15
+
+
+  "sorted element using insertion sort"
+
+   15.
+   45.
+   56.
+   75.
+   85.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Write a Scilab program to find a number using Linear search. Accept 5 numbers fromthe user and number to find.
+
+//linear search
+function linearSearch(arr,num)
+    n=length(arr)
+    found=-1
+    for i=1:n
+        if arr(i)==num
+            found=i
+            break
+        end
+    end
+    
+    if found ==-1 then
+        disp("number not found in array")
+    else
+        disp("Number are at the position "+string(i)+".")
+    end
+endfunction
+for i=1:5
+    arr(i)=input("Enter Number "+string(i)+".")
+end
+num=input("enter Number to search ");
+linearSearch(arr,num)
+
+
+output:::
+
+--> exec('/home/fymsc12/scilab_assignment/Q3.linear search.sce', -1)
+Enter Number 1.2
+
+Enter Number 2.3
+
+Enter Number 3.4
+
+Enter Number 4.7
+
+Enter Number 5.9
+
+enter Number to search 5
+
+
+  "number not found in array"
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+4. Write a Scilab program to find a number using Binary search. Accept 5 numbers fromthe user and number to find.
+
+numbers = zeros(1, 5);  
+for i = 1:5
+    numbers(i) = input("Enter number " + string(i) + ": ");
+end
+
+find_num = input("Enter the number to find: ");
+
+low = 1;
+high = length(numbers);
+found = %f;
+
+while low <= high do
+    mid = floor((low + high) / 2);
+    if numbers(mid) == find_num then
+        disp("Number found at position " + string(mid));
+        found = %t;
+        break;
+    elseif numbers(mid) < find_num then
+        low = mid + 1;
+    else
+        high = mid - 1;
+    end
+end
+
+if ~found then
+    disp("Number not found.");
+end
+
+
+output::
+
+--> exec('/home/fymsc12/scilab_assignment/Binary_Search.sce', -1)
+Enter number 1: 2
+
+Enter number 2: 34
+
+Enter number 3: 5
+
+Enter number 4: 56
+
+Enter number 5: 65
+
+Enter the number to find: 5
+
+
+  "Number found at position 3"

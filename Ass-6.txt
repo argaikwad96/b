@@ -1,0 +1,54 @@
+Ass 6
+
+Que 1 Let there be N workers and N jobs. Any worker can be assigned to perform any job, incurring some cost that may vary depending on the work-job assignment. Itis required to perform all jobs by assigning exactly one worker to each job and exactly one job to each agent in such a way that the total cost of the assignment isminimized. Write a Scilab program to solve this problem.
+
+
+function [assignment, total_cost] = assignment_problem(cost_matrix)
+    n = size(cost_matrix, 1);  // Number of workers and jobs
+    assignment = zeros(1, n);  // Stores the assigned job for each worker
+    total_cost = 0;            // Stores the total cost of the assignment
+
+    // Create a copy of the cost matrix to avoid modifying the original
+    cost_matrix_copy = cost_matrix;
+
+    for i = 1:n
+        // Find the minimum cost job for the current worker
+        [min_cost, min_job] = min(cost_matrix_copy(i, :));
+        assignment(i) = min_job;
+        total_cost = total_cost + min_cost;
+
+        // Mark the assigned job as unavailable for other workers
+        cost_matrix_copy(:, min_job) = %inf;
+    end
+endfunction
+
+// Example usage
+cost_matrix = [10,20,30,40;
+               40,50,60,70;
+               50,60,70,80;
+               60,70,80,90];
+
+[assignment, total_cost] = assignment_problem(cost_matrix);
+
+printf("Optimal Assignment:\n");
+for i = 1:size(assignment, 2)
+    printf("Worker %d is assigned to Job %d\n", i, assignment(i));
+end
+
+printf("\nTotal Cost: %d\n", total_cost);
+
+
+
+
+
+output::
+
+--> exec('/home/fymsc12/scilab_assignment/greedy_method.sci', -1)
+Optimal Assignment:
+Worker 1 is assigned to Job 1
+Worker 2 is assigned to Job 2
+Worker 3 is assigned to Job 3
+Worker 4 is assigned to Job 4
+
+Total Cost: 220
+

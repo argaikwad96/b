@@ -1,0 +1,133 @@
+Ass -  5
+1. Write a Scilab program to sort 5 numbers using Merge sort in increasing order.
+
+function merged = merge(left, right)
+    i = 1; j = 1;
+    merged = [];
+    
+    while i <= length(left) & j <= length(right) do
+        if left(i) <= right(j) then
+            merged = [merged, left(i)];
+            i = i + 1;
+        else
+            merged = [merged, right(j)];
+            j = j + 1;
+        end
+    end
+    
+    // Append remaining elements
+    if i <= length(left) then
+        merged = [merged, left(i:$)];
+    elseif j <= length(right) then
+        merged = [merged, right(j:$)];
+    end
+endfunction
+
+function sorted = mergeSort(arr)
+    if length(arr) <= 1 then
+        sorted = arr;
+    else
+        mid = floor(length(arr) / 2);
+        left = mergeSort(arr(1:mid));
+        right = mergeSort(arr(mid+1:$));
+        sorted = merge(left, right);
+    end
+endfunction
+
+numbers = zeros(1, 5);
+for i = 1:5
+    numbers(i) = input("Enter number " + string(i) + ": ");
+end
+
+// Sort the numbers using Merge Sort
+sorted_numbers = mergeSort(numbers);
+
+// Display the sorted numbers
+disp("Sorted numbers (Merge Sort):");
+disp(sorted_numbers);
+						*********************************************************
+
+outputs::
+
+--> exec('/home/fymsc12/scilab_assignment/merge_sort.sci', -1)
+Enter number 1: 2
+
+Enter number 2: 34
+
+Enter number 3: 5
+
+Enter number 4: 65
+
+Enter number 5: 78
+
+
+  "Sorted numbers (Merge Sort):"
+
+   2.   5.   34.   65.   78.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Write a Scilab program to solve the following problem: Nuts & Bolts Problem (Lock & Key problem) using Quick Sort. Given a set of n nuts of different sizes and n bolts of different sizes. There is a one-one mapping between nuts andbolts. Match nuts and bolts efficiently. 
+
+Constraint: Comparison of a nut to another nut or a bolt to another bolt is not allowed. It means a nut can only be compared with a bolt and a bolt can only be compared with a nut tosee which one is bigger/smaller. Another way of asking this problem is, to give a box with locks and keys where one lock can be opened by one key in the box. We need to match the pair.
+
+function match_nuts_bolts(nuts, bolts)
+    function [smaller, equal, larger] = partition(arr, pivot)
+        smaller = [];
+        equal = [];
+        larger = [];
+        
+        for i = 1:length(arr)
+            if arr(i) < pivot then
+                smaller = [smaller, arr(i)];
+            elseif arr(i) == pivot then
+                equal = [equal, arr(i)];
+            else
+                larger = [larger, arr(i)];
+            end
+        end
+    endfunction
+
+    function quick_match(nuts, bolts)
+        if length(nuts) == 0 then
+            return;
+        end
+
+        pivotIndex = round(1 + (length(bolts) - 1) * rand());
+        pivotBolt = bolts(pivotIndex);
+        
+        
+        [smallerNuts, equalNuts, largerNuts] = partition(nuts, pivotBolt);
+        
+        
+        [smallerBolts, equalBolts, largerBolts] = partition(bolts, equalNuts(1));
+
+        
+        quick_match(smallerNuts, smallerBolts);
+        quick_match(largerNuts, largerBolts);
+        
+        disp("Matched Nut: " + string(equalNuts(1)) + " with Bolt: " + string(equalBolts(1)));
+    endfunction
+
+    quick_match(nuts, bolts);
+endfunction
+
+
+nuts = [3, 1, 5, 2, 4];
+bolts = [4, 2, 3, 1, 5];
+match_nuts_bolts(nuts, bolts);
+
+						******************************************************
+outputs::
+
+
+--> exec('/home/fymsc12/scilab_assignment/nuts_bolts1.sci', -1)
+
+  "Matched Nut: 1 with Bolt: 1"
+
+  "Matched Nut: 3 with Bolt: 3"
+
+  "Matched Nut: 5 with Bolt: 5"
+
+  "Matched Nut: 4 with Bolt: 4"
+
+  "Matched Nut: 2 with Bolt: 2"

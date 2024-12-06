@@ -1,0 +1,182 @@
+Assignment 7
+
+1. Write a Scilab program to solve a problem of maze by applying an appropriate algorithm. Write an algorithm for the same along with time complexity in the notebook.
+
+function move(m, n, x, y, maze)
+    maze(x, y) = 0;
+    disp(maze);
+  
+    if x == goal(1) & y == goal(2) then
+        return;
+    end
+    
+    if x < m & maze(x + 1, y) == 1 then
+        move(m, n, x + 1, y, maze);
+    end
+    
+    if y < n & maze(x, y + 1) == 1 then
+        move(m, n, x, y + 1, maze);
+    end
+    
+    if y > 1 & maze(x, y - 1) == 1 then
+        move(m, n, x, y - 1, maze);
+    end
+    
+    if x > 1 & maze(x - 1, y) == 1 then
+        move(m, n, x - 1, y, maze);
+    end
+endfunction
+
+function backtrack(x, y, maze)
+    maze(x, y) = 1;
+    disp(maze);
+    
+    if x == start(1) & y == start(2) then
+        return;
+    end
+    
+    if x < m & maze(x + 1, y) == 0 then
+        backtrack(x + 1, y, maze);
+    end
+    
+    if y < n & maze(x, y + 1) == 0 then
+        backtrack(x, y + 1, maze);
+    end
+    
+    if y > 1 & maze(x, y - 1) == 0 then
+        backtrack(x, y - 1, maze);
+    end
+    
+    if x > 1 & maze(x - 1, y) == 0 then
+        backtrack(x - 1, y, maze);
+    end
+endfunction
+
+maze = [1, 0, 0, 0; 
+        1, 1, 1, 1; 
+        0, 1, 0, 1; 
+        1, 0, 1, 1];
+start = [1, 1];
+goal = [4, 4];
+n = size(maze, 1);
+m = size(maze, 2);
+disp(maze);
+
+move(m, n, start(1), start(2), maze);
+backtrack(goal(1), goal(2), maze);
+
+
+Output:
+
+
+-> exec('/home/fymsc12/assignment7Q1.sce', -1)
+
+   1.   0.   0.   0.
+   1.   1.   1.   1.
+   0.   1.   0.   1.
+   1.   0.   1.   1.
+
+   0.   0.   0.   0.
+   1.   1.   1.   1.
+   0.   1.   0.   1.
+   1.   0.   1.   1.
+
+   0.   0.   0.   0.
+   0.   1.   1.   1.
+   0.   1.   0.   1.
+   1.   0.   1.   1.
+
+   0.   0.   0.   0.
+   0.   0.   1.   1.
+   0.   1.   0.   1.
+   1.   0.   1.   1.
+
+   0.   0.   0.   0.
+   0.   0.   1.   1.
+   0.   0.   0.   1.
+   1.   0.   1.   1.
+
+   0.   0.   0.   0.
+   0.   0.   0.   1.
+   0.   1.   0.   1.
+   1.   0.   1.   1.
+
+   0.   0.   0.   0.
+   0.   0.   0.   0.
+   0.   1.   0.   1.
+   1.   0.   1.   1.
+
+   0.   0.   0.   0.
+   0.   0.   0.   0.
+   0.   1.   0.   0.
+   1.   0.   1.   1.
+
+   0.   0.   0.   0.
+   0.   0.   0.   0.
+   0.   1.   0.   0.
+   1.   0.   1.   0.
+
+   1.   0.   0.   0.
+   1.   1.   1.   1.
+   0.   1.   0.   1.
+   1.   0.   1.   1.
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Que. 2 Suppose we want to make an exam schedule for a university. We have listed different subjects and students enrolled in every subject. Many subjects would have common students (of the same batch, some backlog students, etc). How do we schedule the exam so that no two exams with a common student are scheduled at same time? How many minimum time slots are needed to schedule all exams? This problem can be represented as a graph where every vertex is a subject and an edge between two vertices means there is a common student. So this is a graph coloring problem where the minimum number of time slots is equal to the chromatic number of the graph. Write a Scilab program to solve the above problem.
+
+
+function chromatic_number = graph_coloring(adjacency_matrix)
+    num_vertices = size(adjacency_matrix, 1);
+    coloring = zeros(1, num_vertices);
+    num_colors = 0;
+
+    for vertex = 1:num_vertices
+        available_colors = zeros(1, num_vertices);
+
+        for neighbor = 1:num_vertices
+            if adjacency_matrix(vertex, neighbor) == 1
+                if coloring(neighbor) > 0
+                    available_colors(coloring(neighbor)) = 1;
+                end
+            end
+        end
+
+        for color = 1:num_vertices
+            if available_colors(color) == 0
+                coloring(vertex) = color;
+                num_colors = max(num_colors, color);
+                break;
+            end
+        end
+    end
+
+    chromatic_number = num_colors;
+end
+
+//% Define the adjacency matrix representing common students
+adjacency_matrix = [
+    0 1 1 1;
+    1 0 1 0;
+    1 1 0 1;
+    1 0 1 0
+];
+
+chromatic_number = graph_coloring(adjacency_matrix);
+disp('Minimum number of time slots required: ')
+disp(chromatic_number)
+
+
+Output:
+
+--> exec('/home/fymsc12/scilab_assignment/Assignment 7/Q2.sce', -1)
+
+  "Minimum number of time slots required: "
+
+   3.
+
+
+
+

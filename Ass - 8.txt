@@ -1,0 +1,136 @@
+Assignment 8
+
+
+Que 1. Given a set of cities and distance between every pair of cities, the problem is to find the shortest possible tour that visits every city exactly once and returns to the starting point.
+
+function tour = tsp_nearest_neighbor(cities, dist)
+n = size(cities, 1);
+tour = zeros(n, 1);
+visited = zeros(n, 1);
+Inf=200;
+
+current_city = 1;
+tour(1) = current_city;
+visited(current_city) = 1;
+
+for i = 2:n
+min_dist = Inf;
+next_city = -1;
+
+for j = 1:n
+if (j ~= current_city && visited(j) == 0 && dist(current_city, j) < min_dist)
+min_dist = dist(current_city, j);
+next_city = j;
+end
+end
+
+current_city = next_city;
+tour(i) = current_city;
+visited(current_city) = 1;
+end
+
+tour = [tour; tour(1)]; 
+end
+
+
+cities = [1, 2; 3, 4; 5, 6; 7, 8]; 
+dist = [0, 2, 3, 4; 2, 0, 5, 6; 3, 5, 0, 7; 4, 6, 7, 0]; 
+
+tour = tsp_nearest_neighbor(cities, dist);
+disp(tour);
+
+
+Output:
+
+--> exec('/home/fymsc12/scilab_assignment/Assignment 8/Q1.sce', -1)
+
+   1.
+   2.
+   3.
+   4.
+   1.
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Que. 2 Generate a binary string of length N using branch and bound technique.
+(Input: N = 3 Output: 000 001 010 011 100 101 110 111 Explanation:
+Numbers with 3 binary digits are 0, 1, 2, 3, 4, 5, 6, 7 Input: N = 2 Output: 00 01 10 11)
+
+function generateBinaryStrings(N, str, depth)
+    
+    if depth == N then
+       
+        disp(str)
+        return
+    end
+
+   
+    generateBinaryStrings(N, str + '0', depth + 1)
+
+   
+    generateBinaryStrings(N, str + '1', depth + 1)
+endfunction
+
+
+function main()
+    
+    N = input("Enter the length of the binary string (N): ")
+
+    
+    disp("Binary strings of length " + string(N) + " are:")
+    generateBinaryStrings(N, "", 0)
+endfunction
+
+
+main()
+
+
+Output:
+
+--> exec('/home/fymsc12/scilab_assignment/Assignment 8/Q12.sce', -1)
+Enter the length of the binary string (N): 3
+
+
+  "Binary strings of length 3 are:"
+
+  "000"
+
+  "001"
+
+  "010"
+
+  "011"
+
+  "100"
+
+  "101"
+
+  "110"
+
+  "111"
+
+--> exec('/home/fymsc12/scilab_assignment/Assignment 8/Q12.sce', -1)
+Enter the length of the binary string (N): 2
+
+
+  "Binary strings of length 2 are:"
+
+  "00"
+
+  "01"
+
+  "10"
+
+  "11"
+
+--> exec('/home/fymsc12/scilab_assignment/Assignment 8/Q12.sce', -1)
+Enter the length of the binary string (N): 1
+
+
+  "Binary strings of length 1 are:"
+
+  "0"
+
+  "1"
+

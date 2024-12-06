@@ -1,0 +1,1017 @@
+Ass -1
+
+in the console
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+1. use assignment operators for creating and (assigning) variable to float value,string,boolean values
+
+float value
+--> // Assigning a float value to a variable
+
+--> float_var = 3.14;  // float_var is assigned the float value 3.14
+
+--> float_var = 3.14;  // float_var is assigned the float value 3.14
+
+--> float_var
+ float_var  = 
+
+   3.14
+*************************************************************************
+
+string value
+--> // Assigning a string value to a variable
+
+--> string_var = "Hello, Scilab!";  // string_var is assigned the string "Hello, Scilab!"
+
+--> string_var
+ string_var  = 
+
+  "Hello, Scilab!"
+*********************************************************************************
+
+boolean value
+// Assigning boolean values to variables
+bool_true = %T;  // bool_true is assigned the boolean value true
+bool_false = %F; // bool_false is assigned the boolean value false
+--> a=3
+ a  = 
+
+   3.
+
+--> b=4
+ b  = 
+
+   4.
+
+--> a==b
+ ans  =
+
+  F
+
+--> a!=b
+ a!  = 
+
+   4.
+
+--> a<b
+ ans  =
+
+  T
+
+--> a>b
+ ans  =
+
+  F
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+2. use comments and continuation line
+--> // This is a single-line comment
+
+--> a = 5; // This is an inline comment
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+3. inbuild mathametical function and operators
+--> a=3
+ a  = 
+
+   3.
+
+--> b=6
+ b  = 
+
+   6.
+
+--> a+b
+ ans  =
+
+   9.
+
+--> a-b
+ ans  =
+
+  -3.
+
+--> a*b
+ ans  =
+
+   18.
+
+--> a/b
+ ans  =
+
+   0.5
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+boolean and comparison opertors
+
+
+--> w= sin(2+3*%i)
+ w  = 
+
+   9.1544991 - 4.168907i
+
+--> t=10
+ t  = 
+
+   10.
+
+--> p=12
+ p  = 
+
+   12.
+
+--> a&b
+ ans  =
+
+  T
+
+--> a|b
+ ans  =
+
+  T
+
+--> a>b
+ ans  =
+
+  F
+
+--> t&p
+ ans  =
+
+  T
+
+--> t|p
+ ans  =
+
+  T
+
+--> t==p
+ ans  =
+
+  F
+
+--> y=p
+ y  = 
+
+   12.
+
+--> p<=t
+ ans  =
+
+  F
+
+--> 2+3*%i
+ ans  =
+
+   2. + 3.i
+
+--> x= 2+3*%i 
+ x  = 
+
+   2. + 3.i
+
+--> y= 3+3*%i
+ y  = 
+
+   3. + 3.i
+
+--> x+y
+ ans  =
+
+   5. + 6.i
+
+--> exp(2)
+ ans  =
+
+   7.3890561
+
+--> log2(10)
+ ans  =
+
+   3.3219281
+
+--> max(5)
+ ans  =
+
+   5.
+
+--> sqrtm(4)
+ ans  =
+
+   2.
+
+--> sqrt(5)
+ ans  =
+
+   2.2360680
+
+--> logm(3)
+ ans  =
+
+   1.0986123
+
+--> y= sin(%pi/2)
+ y  = 
+
+   1.
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+use dtring operator use == for comparison of two string
+--> a=3
+ a  = 
+
+   3.
+
+--> b=3
+ b  = 
+
+   3.
+
+--> a==b
+ ans  =
+
+  T
+
+*******************************************************************************************************************************************************
+assignment 2 
+
+2.1 
+1. write a scilab program to test wether the two number divede by another
+
+
+--> clear
+
+--> n=input("enter number")
+enter number4
+
+ n  = 
+
+   4.
+
+--> m=input("enter another number")
+enter another number20
+
+ m  = 
+
+   20.
+
+--> if(m/n)
+  > disp("the numbers are divisible")
+  > end
+
+  "the numbers are divisible"
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2. write a scilab program to test whether the numer is odd or even 
+--> r=input("enter number")
+enter number5
+
+ r  = 
+
+   5.
+--> if(modulo(r,2)==0)
+  > disp("the number is even")
+  > else disp("the number is odd")
+  > end
+
+  "the number is odd"
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3. write the scilab program to test whether the given number is purely real number or a complex number.
+function isReal = isPurelyReal(number)
+    
+    if imag(number) == 0 then
+        isReal = 1;  
+    else
+        isReal = 0;  
+    end
+endfunction
+
+number = 3 + 4*%i;  
+if isPurelyReal(number) == 1 then
+    disp("The number is purely real.");
+else
+    disp("The number is complex.");
+end
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+4.  write a scilab program to test wether the number is positive negative or zero
+--> m=input("Enter number")
+Enter number5
+
+ m  = 
+
+   5.
+
+--> if(m==0)
+  > disp("the number is zero")
+  > elseif(m<0)
+  > disp("the number is negative")
+  > else disp("the number is positive")
+  > end
+
+  "the number is positive"
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+5. write a program to test whether a given number is positive negative or zero using select statment.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+6. Write a Scilab program to solve a Quadratic Equation ax2 + bx + c = 0.
+The input to the function are the values “a, b, c” and the output of the
+function should be in the variable names “p, q” appropriately declared.
+
+
+function [p, q] = solveQuadratic(a, b, c)
+    // Compute the discriminant
+    discriminant = b^2 - 4*a*c;
+    
+    // Check if the discriminant is positive, zero, or negative
+    if discriminant > 0 then
+        // Two real and distinct roots
+        p = (-b + sqrt(discriminant)) / (2 * a);
+        q = (-b - sqrt(discriminant)) / (2 * a);
+    elseif discriminant == 0 then
+        // One real root (repeated)
+        p = -b / (2 * a);
+        q = p;  // Since both roots are the same
+    else
+        // Complex roots
+        realPart = -b / (2 * a);
+        imaginaryPart = sqrt(-discriminant) / (2 * a);
+        p = realPart + imaginaryPart * %i;
+        q = realPart - imaginaryPart * %i;
+    end
+endfunction
+
+// Example usage:
+a = 1;  // Coefficient of x^2
+b = -3; // Coefficient of x
+c = 2;  // Constant term
+
+[p, q] = solveQuadratic(a, b, c);
+disp("The roots of the quadratic equation are:");
+disp(p);
+disp(q);
+
+*******************************************************************************************************************************************************
+2.2 
+1.Write a Scilab program to compute sum of first ‘n’ natural numbers.
+
+function sum = sumNaturalNumbers(n)
+    // Initialize the sum
+    sum = 0;
+    
+    // Compute the sum using a for loop
+    for i = 1:n
+        sum = sum + i;
+    end
+endfunction
+
+// Example usage:
+n = 10;  // Number of natural numbers to sum
+result = sumNaturalNumbers(n);
+
+disp("The sum of the first " + string(n) + " natural numbers is:");
+disp(result);
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+2.Write a Scilab program to compute factorial of a natural number ‘n’.
+
+function fact = factorial(n)
+    // Initialize the factorial to 1 (since 0! = 1)
+    fact = 1;
+    
+    // Compute the factorial using a for loop
+    for i = 1:n
+        fact = fact * i;
+    end
+endfunction
+
+// Example usage:
+n = 5;  // Natural number for which to compute the factorial
+result = factorial(n);
+
+disp("The factorial of " + string(n) + " is:");
+disp(result);
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+3.Write a Scilab program to obtain the Fibonacci sequence with ‘n’ members, and Fibonacci series with ‘n’ terms.
+
+
+function [fibSequence, fibSum] = fibonacciSeries(n)
+    // Initialize the Fibonacci sequence array
+    if n <= 0 then
+        error("Number of terms must be a positive integer.");
+    elseif n == 1 then
+        fibSequence = [0];
+        fibSum = 0;
+        return;
+    elseif n == 2 then
+        fibSequence = [0, 1];
+        fibSum = 1;
+        return;
+    end
+    
+    fibSequence = zeros(1, n);
+    fibSequence(1) = 0;
+    fibSequence(2) = 1;
+    
+    // Compute the Fibonacci sequence and its sum
+    fibSum = fibSequence(1) + fibSequence(2);
+    for i = 3:n
+        fibSequence(i) = fibSequence(i - 1) + fibSequence(i - 2);
+        fibSum = fibSum + fibSequence(i);
+    end
+endfunction
+
+// Example usage:
+n = 10;  // Number of Fibonacci terms
+[fibSeries, fibSum] = fibonacciSeries(n);
+
+disp("The Fibonacci sequence with " + string(n) + " terms is:");
+disp(fibSeries);
+
+disp("The sum of the first " + string(n) + " Fibonacci terms is:");
+disp(fibSum);
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+4. Write a Scilab program to test whether a given number is prime number or not.
+
+function isPrime = isPrimeno(n)
+    if n <= 1 then
+        isPrime = %F
+        return
+    end
+    for i = 2 : sqrt(n)
+        if modulo(n,i) == 0 then
+            isPrime = %F
+            return
+        end
+    end
+    isPrime = %T
+endfunction
+
+n = 5
+isPrime = isPrimeno(n)
+disp(isPrime)
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+5.Write a Scilab program using for loop to compute the sum of two given matrices, if they are of comparable order.
+
+function result = matrixsum(A,B)
+    [rows,cols] = size(A)
+    result = zeros(rows,cols)
+    for i = 1:rows
+        for j=1:cols
+            result(i,j) = A(i,j) + B(i,j)
+        end
+    end
+endfunction
+
+A = [1 2 ; 3 4]
+B = [5 6 ; 7 8]
+result = matrixsum(A,B)
+disp(result)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+6.Write a Scilab program using for loop to compute the matrix multiplication of two given matrices, if they are of comparable order. Verify the obtained matrix by using Scilab matrix multiplication operator ‘*’.
+
+
+A = [1, 2; 3, 4];
+B = [5, 6; 7, 8];
+
+[m1, n1] = size(A);
+[m2, n2] = size(B);
+
+if n1 <> m2 then
+    error("Matrices cannot be multiplied: incompatible dimensions.");
+end
+
+C = zeros(m1, n2);
+
+for i = 1:m1
+    for j = 1:n2
+        C(i, j) = 0;
+        for k = 1:n1
+            C(i, j) = C(i, j) + A(i, k) * B(k, j);
+        end
+    end
+end
+
+disp("Matrix A:");
+disp(A);
+disp("Matrix B:");
+disp(B);
+disp("Matrix C (computed with for loops):");
+disp(C);
+
+C_builtin = A * B;
+disp("Matrix C with * :");
+disp(C_builtin);
+
+if C ~= C_builtin then
+    error("Results do not match!");
+else
+    disp("Both methods produce the same result.");
+end
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+7.Write a Scilab program to sorting (arrange) a set of numbers in ascending
+and descending order.
+
+
+function [sortedAsc, sortedDesc] = sortNumbers(numbers)
+    sortedAsc = numbers;
+    n = length(sortedAsc);
+    for i = 1:n-1
+        for j = 1:n-i
+            if sortedAsc(j) > sortedAsc(j+1) then
+                temp = sortedAsc(j);
+                sortedAsc(j) = sortedAsc(j+1);
+                sortedAsc(j+1) = temp;
+            end
+        end
+    end
+    
+
+    sortedDesc = numbers;
+    n = length(sortedDesc);
+    for i = 1:n-1
+        for j = 1:n-i
+            if sortedDesc(j) < sortedDesc(j+1) then
+                temp = sortedDesc(j);
+                sortedDesc(j) = sortedDesc(j+1);
+                sortedDesc(j+1) = temp;
+            end
+        end
+    end
+endfunction
+
+numbers = [5, 2, 9, 1, 5, 6];  
+
+[sortedAsc, sortedDesc] = sortNumbers(numbers);
+disp("Sorted in ascending order:");
+disp(sortedAsc);
+
+disp("Sorted in descending order:");
+disp(sortedDesc);
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+8. Write a Scilab program to compute the number of permutations & number of combinations for given values of ‘n’ and ‘r’.
+
+function [P, C] = computePermutationsAndCombinations(n, r)
+    
+    if n < r then
+        error("n must be greater than or equal to r");
+    end
+    
+    P = factorial(n) / factorial(n - r);
+   
+    C = factorial(n) / (factorial(r) * factorial(n - r));
+endfunction
+
+n = 5; 
+r = 3;  
+
+[P, C] = computePermutationsAndCombinations(n, r);
+disp("Number of permutations P(n, r) is: " + string(P));
+disp("Number of combinations C(n, r) is: " + string(C));
+
+*******************************************************************************************************************************************************
+2.3
+
+1. write a scilab program to find the number digits of natural number
+
+
+--> clear
+
+--> function number = count(n)
+  > if(n<0)
+  > disp("the input must be positive number")
+  > end
+  > num_str = string(n);
+  > number = length(num_str);
+  > endfunction
+
+--> n = 12345;  // Example natural number
+
+--> digits = count(n);
+
+--> disp("The number of digits in ", n, " is ", digits);
+
+  "The number of digits in "
+
+   12345.
+
+  " is "
+
+   5.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+2. write a scilab program to obtain a number with digits as the reverse of a given naturl number 'n'
+
+funcprot(0);
+function reversedNumber = reverseDigits(n)
+    reversedNumber = 0;
+    while n > 0
+        digit = modulo(n, 10);  
+        reversedNumber = reversedNumber * 10 + digit;  
+        n = floor(n / 10);
+    end
+endfunction
+n = 12345;
+disp(reverseDigits(n)); 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+3. write the scilab program to test whether a given number is pailndrome.
+
+
+function isPalindrome = checkPalindrome(n)
+    originalNumber = n;
+    reversedNumber = 0;
+
+    while n > 0
+        digit = modulo(n, 10); 
+        reversedNumber = reversedNumber * 10 + digit; 
+        n = floor(n / 10);  
+    end
+    if originalNumber == reversedNumber then
+        isPalindrome = 1;  // 1 indicates true
+    else
+        isPalindrome = 0;  // 0 indicates false
+    end
+endfunction
+
+n = 12321;
+if checkPalindrome(n) == 1 then
+    disp("The number is a palindrome.");
+else
+    disp("The number is not a palindrome.");
+end
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+4. write the scilab program to test whether the given number is armstrong number.
+
+
+function isArmstrong = checkArmstrong(n)
+    originalNumber = n;
+    sum = 0;
+    numDigits = length(string(n));  // Calculate the number of digits
+
+    while n > 0
+        digit = modulo(n, 10);  // Extract the last digit
+        sum = sum + digit^numDigits;  // Add the digit raised to the power of numDigits
+        n = floor(n / 10);  // Remove the last digit
+    end
+
+    // Check if the sum of the digits raised to the power of numDigits equals the original number
+    if sum == originalNumber then
+        isArmstrong = 1;  // 1 indicates true (the number is an Armstrong number)
+    else
+        isArmstrong = 0;  // 0 indicates false (the number is not an Armstrong number)
+    end
+endfunction
+
+// Example usage:
+n = 153;
+if checkArmstrong(n) == 1 then
+    disp("The number is an Armstrong number.");
+else
+    disp("The number is not an Armstrong number.");
+end
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+5. write the scilab program to obtain the decimal equivalent of a given decimal number.
+
+
+function decimalNumber = binaryToDecimal(binaryNumber)
+    decimalNumber = 0;
+    position = 0;
+
+    while binaryNumber > 0
+        digit = modulo(binaryNumber, 10);  
+        decimalNumber = decimalNumber + digit * 2^position;  
+        binaryNumber = floor(binaryNumber / 10); 
+        position = position + 1;  
+    end
+endfunction
+
+binaryNumber = 1101;
+decimalResult = binaryToDecimal(binaryNumber);
+disp("The decimal equivalent is: " + string(decimalResult));
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+6. write a scilab program to obtain the binary equivalent of given decimal number.
+
+
+function binaryNumber = decimalToBinary(decimalNumber)
+    binaryNumber = 0;
+    position = 1;
+
+    while decimalNumber > 0
+        remainder = modulo(decimalNumber, 2);  
+        binaryNumber = binaryNumber + remainder * position;  
+        decimalNumber = floor(decimalNumber / 2); 
+        position = position * 10;
+    end
+endfunction
+
+decimalNumber = 13;
+binaryResult = decimalToBinary(decimalNumber);
+disp("The binary equivalent is: " + string(binaryResult));
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+7. write a scilab program to compute sum of first n prime numbers.
+
+function sumPrimes = sumOfFirstNPrimes(n)
+    count = 0;  
+    num = 2;    
+    sumPrimes = 0; 
+
+    while count < n
+        if isPrime(num) then
+            sumPrimes = sumPrimes + num;  
+            count = count + 1; 
+        end
+        num = num + 1;  
+    end
+endfunction
+
+function result = isPrime(number)
+    if number <= 1 then
+        result = 0; 
+        return;
+    end
+    for i = 2:floor(sqrt(number))
+        if modulo(number, i) == 0 then
+            result = 0;  
+            return;
+        end
+    end
+    result = 1;  
+endfunction
+
+n = 5;
+sumOfPrimes = sumOfFirstNPrimes(n);
+disp("The sum of the first " + string(n) + " prime numbers is: " + string(sumOfPrimes));
+********************************************************************************************************************************************************
+exercis 3
+
+1.Write a Scilab program to solve a Quadratic Equation ax2 + bx + c = 0. The input to the function are the values “a, b, c” and the output of the
+function should be in the variable names “p, q” appropriately declared.
+
+function [p, q] = solveQuadratic(a, b, c)
+    // Compute the discriminant
+    discriminant = b^2 - 4*a*c;
+    
+    // Check if the discriminant is positive, zero, or negative
+    if discriminant > 0 then
+        // Two real and distinct roots
+        p = (-b + sqrt(discriminant)) / (2 * a);
+        q = (-b - sqrt(discriminant)) / (2 * a);
+    elseif discriminant == 0 then
+        // One real root (repeated)
+        p = -b / (2 * a);
+        q = p;  // Since both roots are the same
+    else
+        // Complex roots
+        realPart = -b / (2 * a);
+        imaginaryPart = sqrt(-discriminant) / (2 * a);
+        p = realPart + imaginaryPart * %i;
+        q = realPart - imaginaryPart * %i;
+    end
+endfunction
+
+// Example usage:
+a = 1;  // Coefficient of x^2
+b = -3; // Coefficient of x
+c = 2;  // Constant term
+
+[p, q] = solveQuadratic(a, b, c);
+disp("The roots of the quadratic equation are:");
+disp(p);
+disp(q);
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Write a Scilab program to compute sum of first ‘n’ natural numbers.
+
+function sum = sumNaturalNumbers(n)
+    // Initialize the sum
+    sum = 0;
+    
+    // Compute the sum using a for loop
+    for i = 1:n
+        sum = sum + i;
+    end
+endfunction
+
+// Example usage:
+n = 10;  // Number of natural numbers to sum
+result = sumNaturalNumbers(n);
+
+disp("The sum of the first " + string(n) + " natural numbers is:");
+disp(result);
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Write a Scilab program to compute factorial of a natural number ‘n’.
+
+function fact = factorial(n)
+    // Initialize the factorial to 1 (since 0! = 1)
+    fact = 1;
+    
+    // Compute the factorial using a for loop
+    for i = 1:n
+        fact = fact * i;
+    end
+endfunction
+
+// Example usage:
+n = 5;  // Natural number for which to compute the factorial
+result = factorial(n);
+
+disp("The factorial of " + string(n) + " is:");
+disp(result);
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+4. Write a Scilab program using for loop to compute the sum of two given matrices, if they are of comparable order.
+
+function result = matrixsum(A,B)
+    [rows,cols] = size(A)
+    result = zeros(rows,cols)
+    for i = 1:rows
+        for j=1:cols
+            result(i,j) = A(i,j) + B(i,j)
+        end
+    end
+endfunction
+
+A = [1 2 ; 3 4]
+B = [5 6 ; 7 8]
+result = matrixsum(A,B)
+disp(result)
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+5. Write a Scilab program to compute the number of permutations & number of combinations for given values of ‘n’ and ‘r’.
+
+function [P, C] = computePermutationsAndCombinations(n, r)
+    
+    if n < r then
+        error("n must be greater than or equal to r");
+    end
+    
+    P = factorial(n) / factorial(n - r);
+   
+    C = factorial(n) / (factorial(r) * factorial(n - r));
+endfunction
+
+n = 5; 
+r = 3;  
+
+[P, C] = computePermutationsAndCombinations(n, r);
+disp("Number of permutations P(n, r) is: " + string(P));
+disp("Number of combinations C(n, r) is: " + string(C));
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+6. Write a Scilab program to compute sum of digits of a natural number ‘n’.
+
+function fact = factorial(n)
+    // Initialize the factorial to 1 (since 0! = 1)
+    fact = 1;
+    
+    // Compute the factorial using a for loop
+    for i = 1:n
+        fact = fact * i;
+    end
+endfunction
+
+// Example usage:
+n = 5;  // Natural number for which to compute the factorial
+result = factorial(n);
+
+disp("The factorial of " + string(n) + " is:");
+disp(result);
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+7. Write a Scilab program to find the number of digits of a natural number ‘n’.
+
+n = 123456;  
+
+
+digitCount = 0;
+
+if n <= 0 then
+    disp("The number must be a natural number (positive integer).");
+else
+    
+    while n > 0 do
+        n = floor(n / 10);  
+        digitCount = digitCount + 1;  
+    end
+
+   
+    disp("The number of digits is: " + string(digitCount));
+end
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+8. Write a Scilab program to obtain a number with digits as the reverse of a given natural number ‘n’.
+
+funcprot(0);
+function reversedNumber = reverseDigits(n)
+    reversedNumber = 0;
+    while n > 0
+        digit = modulo(n, 10);  
+        reversedNumber = reversedNumber * 10 + digit;  
+        n = floor(n / 10);
+    end
+endfunction
+n = 12345;
+disp(reverseDigits(n)); 
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+9. Write a Scilab program to test whether a given number is Palindrome.
+
+function isPalindrome = checkPalindrome(n)
+    originalNumber = n;
+    reversedNumber = 0;
+
+    while n > 0
+        digit = modulo(n, 10); 
+        reversedNumber = reversedNumber * 10 + digit; 
+        n = floor(n / 10);  
+    end
+    if originalNumber == reversedNumber then
+        isPalindrome = 1;  // 1 indicates true
+    else
+        isPalindrome = 0;  // 0 indicates false
+    end
+endfunction
+
+n = 12321;
+if checkPalindrome(n) == 1 then
+    disp("The number is a palindrome.");
+else
+    disp("The number is not a palindrome.");
+end
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+10. Write a Scilab program to test whether a given number is Armstrong number.
+
+function isArmstrong = checkArmstrong(n)
+    originalNumber = n;
+    sum = 0;
+    numDigits = length(string(n));  // Calculate the number of digits
+
+    while n > 0
+        digit = modulo(n, 10);  // Extract the last digit
+        sum = sum + digit^numDigits;  // Add the digit raised to the power of numDigits
+        n = floor(n / 10);  // Remove the last digit
+    end
+
+    // Check if the sum of the digits raised to the power of numDigits equals the original number
+    if sum == originalNumber then
+        isArmstrong = 1;  // 1 indicates true (the number is an Armstrong number)
+    else
+        isArmstrong = 0;  // 0 indicates false (the number is not an Armstrong number)
+    end
+endfunction
+
+// Example usage:
+n = 153;
+if checkArmstrong(n) == 1 then
+    disp("The number is an Armstrong number.");
+else
+    disp("The number is not an Armstrong number.");
+end
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+11. Write a Scilab program to obtain the binary equivalent of a given decimal number.
+
+function binaryNumber = decimalToBinary(decimalNumber)
+    binaryNumber = 0;
+    position = 1;
+
+    while decimalNumber > 0
+        remainder = modulo(decimalNumber, 2);  
+        binaryNumber = binaryNumber + remainder * position;  
+        decimalNumber = floor(decimalNumber / 2); 
+        position = position * 10;
+    end
+endfunction
+
+decimalNumber = 13;
+binaryResult = decimalToBinary(decimalNumber);
+disp("The binary equivalent is: " + string(binaryResult));
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+12. Write a Scilab program to obtain the decimal equivalent of a given binary number.
+
+function decimalNumber = binaryToDecimal(binaryNumber)
+    decimalNumber = 0;
+    position = 0;
+
+    while binaryNumber > 0
+        digit = modulo(binaryNumber, 10);  
+        decimalNumber = decimalNumber + digit * 2^position;  
+        binaryNumber = floor(binaryNumber / 10); 
+        position = position + 1;  
+    end
+endfunction
+
+binaryNumber = 1101;
+decimalResult = binaryToDecimal(binaryNumber);
+disp("The decimal equivalent is: " + string(decimalResult));
+
+
+
+
